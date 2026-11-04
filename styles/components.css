@@ -1,19 +1,125 @@
-.site-header { position: absolute; z-index: 10; top: 0; right: 0; left: 0; height: var(--header-height); border-bottom: 1px solid rgb(255 255 255 / 8%); background: rgb(17 19 21 / 72%); backdrop-filter: blur(16px); }
-.header-inner { display: flex; height: 100%; align-items: center; justify-content: space-between; }
-.brand { display: inline-flex; align-items: center; gap: 10px; font-size: 1.15rem; font-weight: 850; letter-spacing: .06em; }
-.brand > span:last-child > span { color: #a7aaab; font-weight: 500; }
-.brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid var(--color-accent); border-radius: 50%; color: var(--color-accent); font-size: 1rem; font-weight: 800; }
-.primary-nav { display: flex; align-items: center; gap: clamp(20px, 3vw, 39px); color: #d0d0ce; font-size: .82rem; font-weight: 600; }
-.primary-nav > a:not(.button) { transition: color .2s ease; }
-.primary-nav > a:not(.button):hover { color: var(--color-accent); }
-.menu-toggle { display: none; }
-.button { display: inline-flex; min-height: 54px; align-items: center; justify-content: center; gap: 24px; padding: 0 24px; border: 1px solid transparent; border-radius: 4px; color: white; background: var(--color-accent); font-size: .85rem; font-weight: 750; cursor: pointer; transition: transform .2s ease, background .2s ease; }
-.button:hover { transform: translateY(-2px); background: #ff7443; }
-.button-orange { color: #111315; }
-.button-small { min-height: 43px; padding: 0 17px; font-size: .78rem; }
-.text-link { display: inline-flex; align-items: center; gap: 13px; color: #e0e0dc; font-size: .85rem; font-weight: 650; }
-.text-link span { color: var(--color-accent); font-size: 1.1rem; transition: transform .2s ease; }
-.text-link:hover span { transform: translate(3px, -2px); }
-.eyebrow { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; color: #a5a7a7; font-size: .68rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
-.eyebrow > span { width: 7px; height: 7px; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 4px rgb(255 91 34 / 15%); }
-.eyebrow b { color: var(--color-accent); font-weight: 500; }
+.site-header {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: var(--header-height);
+  border-bottom: 1px solid rgb(255 255 255 / 8%);
+  background: rgb(17 19 21 / 72%);
+  backdrop-filter: blur(16px);
+}
+.header-inner {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.15rem;
+  font-weight: 850;
+  letter-spacing: 0.06em;
+}
+.brand > span:last-child > span {
+  color: #a7aaab;
+  font-weight: 500;
+}
+.brand-mark {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 1px solid var(--color-accent);
+  border-radius: 50%;
+  color: var(--color-accent);
+  font-size: 1rem;
+  font-weight: 800;
+}
+.primary-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(20px, 3vw, 39px);
+  color: #d0d0ce;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+.primary-nav > a:not(.button) {
+  transition: color 0.2s ease;
+}
+.primary-nav > a:not(.button):hover {
+  color: var(--color-accent);
+}
+.menu-toggle {
+  display: none;
+}
+.button {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 0 24px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: white;
+  background: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 750;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+.button:hover {
+  transform: translateY(-2px);
+  background: #ff7443;
+}
+.button-orange {
+  color: #111315;
+}
+.button-small {
+  min-height: 43px;
+  padding: 0 17px;
+  font-size: 0.78rem;
+}
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 13px;
+  color: #e0e0dc;
+  font-size: 0.85rem;
+  font-weight: 650;
+}
+.text-link span {
+  color: var(--color-accent);
+  font-size: 1.1rem;
+  transition: transform 0.2s ease;
+}
+.text-link:hover span {
+  transform: translate(3px, -2px);
+}
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  color: #a5a7a7;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.eyebrow > span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  box-shadow: 0 0 0 4px rgb(255 91 34 / 15%);
+}
+.eyebrow b {
+  color: var(--color-accent);
+  font-weight: 500;
+}

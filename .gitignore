@@ -9,3 +9,7 @@
 Thumbs.db
 .vscode/
 .idea/
+
+# Build output and installed packages
+node_modules/
+dist/
