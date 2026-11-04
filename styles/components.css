@@ -1,12 +1,12 @@
 .site-header {
-  position: absolute;
+  position: sticky;
   z-index: 10;
   top: 0;
   right: 0;
   left: 0;
   height: var(--header-height);
   border-bottom: 1px solid rgb(255 255 255 / 8%);
-  background: rgb(17 19 21 / 72%);
+  background: rgb(17 19 21 / 94%);
   backdrop-filter: blur(16px);
 }
 .header-inner {

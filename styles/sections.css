@@ -2,7 +2,7 @@
   position: relative;
   min-height: 770px;
   overflow: hidden;
-  padding-top: calc(var(--header-height) + 90px);
+  padding-top: 90px;
   background: #111315;
 }
 .hero::after {
@@ -783,7 +783,7 @@
   }
   .hero {
     min-height: 700px;
-    padding-top: calc(var(--header-height) + 66px);
+    padding-top: 66px;
   }
   .hero-grid {
     grid-template-columns: 1fr 1fr;
@@ -877,7 +877,7 @@
   }
   .hero {
     min-height: auto;
-    padding-top: calc(var(--header-height) + 54px);
+    padding-top: 54px;
     padding-bottom: 85px;
   }
   .hero::after {
