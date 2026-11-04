@@ -1,7 +1,9 @@
 const MAX_BODY_BYTES = 16_384;
 const MAX_NAME_LENGTH = 80;
 const MAX_CONTACT_LENGTH = 160;
-const MAX_MESSAGE_LENGTH = 1_500;
+const MAX_MESSAGE_LENGTH = 1_200;
+const MAX_COLOR_LENGTH = 100;
+const MAX_PHOTO_URL_LENGTH = 500;
 
 function sendJson(res, statusCode, payload) {
   res.status(statusCode).setHeader("Content-Type", "application/json; charset=utf-8");
@@ -58,18 +60,29 @@ module.exports = async function handler(req, res) {
     return sendJson(res, 400, { message: "Некорректные данные формы." });
   }
 
-  // Honeypot: silently accept automated submissions without forwarding them.
   if (cleanText(body.website, 200)) {
     return sendJson(res, 200, { ok: true });
   }
 
   const name = cleanText(body.name, MAX_NAME_LENGTH);
   const contact = cleanText(body.contact, MAX_CONTACT_LENGTH);
+  const diameter = cleanText(body.diameter, 20);
+  const color = cleanText(body.color, MAX_COLOR_LENGTH);
+  const photoUrl = cleanText(body.photoUrl, MAX_PHOTO_URL_LENGTH);
   const message = cleanText(body.message, MAX_MESSAGE_LENGTH);
   const turnstileToken = cleanText(body.turnstileToken, 2_048);
 
-  if (!name || !contact || !turnstileToken) {
-    return sendJson(res, 400, { message: "Заполните обязательные поля и пройдите проверку защиты от спама." });
+  if (!name || !contact || !diameter || !turnstileToken) {
+    return sendJson(res, 400, { message: "Заполните обязательные поля и пройдите проверку от спама." });
+  }
+
+  if (photoUrl) {
+    try {
+      const parsedPhotoUrl = new URL(photoUrl);
+      if (!["http:", "https:"].includes(parsedPhotoUrl.protocol)) throw new Error("Invalid URL protocol");
+    } catch {
+      return sendJson(res, 400, { message: "Проверьте ссылку на фото." });
+    }
   }
 
   const { TELEGRAM_BOT_TOKEN: botToken, TELEGRAM_CHAT_ID: chatId, TURNSTILE_SECRET_KEY: turnstileSecret } = process.env;
@@ -93,11 +106,14 @@ module.exports = async function handler(req, res) {
     }
 
     const text = [
-      "Новая заявка с сайта",
+      "Новая заявка RIMLAB",
       "",
       `Имя: ${name}`,
       `Контакт: ${contact}`,
-      message ? `Сообщение: ${message}` : ""
+      `Диаметр: ${diameter}`,
+      color ? `Желаемый цвет: ${color}` : "",
+      photoUrl ? `Фото: ${photoUrl}` : "",
+      message ? `Комментарий: ${message}` : ""
     ].filter(Boolean).join("\n");
 
     const telegramResponse = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
